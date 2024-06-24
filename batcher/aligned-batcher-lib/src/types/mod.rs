@@ -15,6 +15,7 @@ pub enum ProvingSystemId {
     SP1,
     Halo2KZG,
     Halo2IPA,
+    Halo2Axiom,
 }
 
 #[derive(Debug, Serialize, Deserialize, Default, Clone)]
@@ -137,7 +138,8 @@ pub fn parse_proving_system(proving_system: &str) -> anyhow::Result<ProvingSyste
         "SP1" => Ok(ProvingSystemId::SP1),
         "Halo2IPA" => Ok(ProvingSystemId::Halo2IPA),
         "Halo2KZG" => Ok(ProvingSystemId::Halo2KZG),
-        _ => Err(anyhow!("Invalid proving system: {}, Available proving systems are: [GnarkPlonkBls12_381, GnarkPlonkBn254, Groth16Bn254, SP1, Halo2KZG, Halo2IPA]", proving_system))
+        "Halo2Axiom" => Ok(ProvingSystemId::Halo2Axiom),
+        _ => Err(anyhow!("Invalid proving system: {}, Available proving systems are: [GnarkPlonkBls12_381, GnarkPlonkBn254, Groth16Bn254, SP1, Halo2KZG, Halo2IPA, Halo2Axiom]", proving_system))
     }
 }
 
